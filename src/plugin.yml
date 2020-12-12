@@ -1,0 +1,18 @@
+name: Tecknix-Client-API
+version: 1.0.0
+description: Allows Communication Between TecknixClient And A Spigot Server
+author: Tecknix INC
+website: tecknix.com
+
+main: com.tecknix.api.TecknixAPI
+
+commands:
+    tchelp:
+        description: help command
+        permission: tecknix.tchelp
+        usage: /tchelp
+    client:
+        description: client command
+        permission: tecknix.client
+        usage: /client (name)
+permissions: {}
