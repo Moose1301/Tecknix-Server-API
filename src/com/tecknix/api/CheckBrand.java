@@ -15,6 +15,7 @@ public class CheckBrand implements PluginMessageListener {
             String brand = new String(msg, "UTF-8").substring(1);
             if (brand.equals("Tecknix-Client")) {
                 p.sendMessage(ChatColor.AQUA + "Thankyou For Using TecknixClient!");
+                TecknixAPI.getInstance().tecknixClientUsers.add(p.getUniqueId());
             }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

@@ -1,15 +1,16 @@
 package com.tecknix.api.events;
 
+import com.tecknix.api.TecknixAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class JoinEvent implements Listener {
 
-    Player p;
 
     private static void addChannel(Player p, String channel) {
         try {
@@ -22,7 +23,13 @@ public class JoinEvent implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent evt) {
-        addChannel(p, "MC|BRAND");
+        addChannel(evt.getPlayer(), "MC|BRAND");
+    }
+    @EventHandler
+    public void onPlayerLeave(PlayerQuitEvent event) {
+        if(!TecknixAPI.getInstance().tecknixClientUsers.isEmpty()) {
+            TecknixAPI.getInstance().tecknixClientUsers.remove(event.getPlayer().getUniqueId());
+        }
     }
 }
 
